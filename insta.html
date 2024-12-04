@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Josefin Slab", serif;
+        }
+        html{
+            font-size: 62.5%;
+        }
+        .main-div{
+            width:100vw;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            cursor: pointer;
+        }
+        .main-div h1{
+            font-size: 3rem;
+            margin-bottom: 2rem;
+        }
+        .inner-div img{
+            width: 30rem;
+            height: 50rem;
+            box-shadow: 0 1rem  2rem 0.8 rgba(0,0,0,0.5);
+            position: relative;
+        }
+        .inner-div i{
+            position: absolute;
+            color: red;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%), -50%;
+            animation: heartGrow 0.8s linear;
+            -webkit-animation: heartGrow 0.8s linear;
+
+        }
+
+        @keyframes heartGrow {
+            100%{
+                transform: scale(8);
+                opacity: 0;
+            }
+        }
+        .clickCount{
+            color: rgb(235, 64, 64);
+        }
+       
+    </style>
+</head>
+<body>
+    <div class="main-div">
+        <h1>I am click <span class="clickCount"></span> times 😍</h1>
+        <div class="inner-div">
+            <img src="./photo grl.jpg" alt="girl">
+          
+        </div>
+        
+    </div>
+    <script>
+        const clickArea = document.querySelector('.inner-div');
+        const clickCount = document.querySelector('.clickCount');
+
+        let likeCount = 0;
+      
+        {/*  <i class="fas fa-heart"></i> */}
+         const showHeart = (e) =>{
+            const heart = document.createElement('i');
+            heart.classList.add('fas');
+            heart.classList.add('fa-heart');
+            clickArea.appendChild(heart);
+
+            setTimeout(()=>{
+                heart.remove();
+            },800)
+         }
+
+        clickArea.addEventListener('dblclick',(e)=>{
+            clickCount.innerHTML = ++likeCount;
+            showHeart(e);
+
+           
+        });
+
+
+    </script>
+</body>
+</html>
